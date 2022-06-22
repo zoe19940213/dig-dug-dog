@@ -1,3 +1,5 @@
 <template>
-  <div class="knowledge"></div>
+  <div class="knowledge">
+    <h2>Knowledge Board</h2>
+  </div>
 </template>

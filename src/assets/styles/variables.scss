@@ -1,0 +1,55 @@
+/* == Variables == */
+
+
+/* - colors - */
+
+$theme-green: #77bdb1;
+$theme-yellow: #f2e7a2;
+$theme-orange: #ef976d;
+$support-green: #e0eded;
+$support-orange: #f3c4a5;
+$support-pink: #f4dbd6;
+$support-yellow: #eec71c;
+$primary-text-color: #4d4b4b;
+$secondary-text-color: #97979a;
+$white-text-color: #ffffff;
+
+/* - sizes - */
+
+$primary-text-size: 16px;
+$secondary-text-size: 14px;
+$big-text-size: 20px;
+
+/* - buttons - */
+
+@mixin set-button($bg-color, $text-color, $text-size) {
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  background-color: $bg-color;
+  color: $text-color;
+  font-size: $primary-text-size;
+  @content;
+}
+
+
+/* - inputs - */
+
+%input-style {
+  display: flex;
+  flex-direction: column;
+  label {
+    padding-left: 5px;
+  }
+  input {
+    margin-top: 10px;
+    padding: 10px;
+    width: 400px;
+    height: 60px;
+    border: 2px solid $support-orange;
+    border-radius: 5px;
+    &:focus {
+      border-color: $theme-orange;
+    }
+  }
+}

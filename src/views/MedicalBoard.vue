@@ -1,3 +1,5 @@
 <template>
-  <div class="medical"></div>
+  <div class="medical">
+    <h2>Medical Board</h2>
+  </div>
 </template>
