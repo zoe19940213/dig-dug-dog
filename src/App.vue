@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <div class="nav-bar">
+    <div id="nav-bar">
       <NavBar />
     </div>
-    <div class="main">
-      <div class="side-bar">
+    <div id="main">
+      <div id="side-bar">
         <SideBar v-if="isLogin" />
       </div>
-      <div class="view-part">
+      <div id="view-part">
         <router-view />
       </div>
     </div>
@@ -36,21 +36,21 @@ export default {
 </script>
 
 <style lang="scss">
-.nav-bar{
+#nav-bar{
   position: fixed;
   top: 0;
 }
-.main{
+#main{
   margin: auto;
-  margin-top: 80px;
+  margin-top: 70px;
   width: 95%;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
 }
-.side-bar{
+#side-bar{
   grid-column: 1/2;
 }
-.view-part{
+#view-part{
   grid-column: 2/7;
 }
 
