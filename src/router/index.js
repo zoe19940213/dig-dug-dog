@@ -44,7 +44,7 @@ const routes = [{
       import ('../views/KnowledgeBoard'),
   },
   {
-    path: '/getdogs',
+    path: '/board/getdogs',
     name: 'get-dogs',
     component: () =>
       import ('../views/GetDogs')
