@@ -11,18 +11,23 @@
         <router-view />
       </div>
     </div>
+    <div id="footer">
+      <Footer />
+    </div>
   </div>
 </template>
 
 <script>
 import NavBar from "./components/NavBar";
 import SideBar from "./components/SideBar.vue";
+import Footer from './components/FooterBar'
 
 export default {
   name: "App",
   components: {
     NavBar,
     SideBar,
+    Footer
   },
   computed: {
     isLogin() {
