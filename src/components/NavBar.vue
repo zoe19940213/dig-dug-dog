@@ -12,7 +12,8 @@
             <font-awesome-icon class="paw icon" icon="fa-solid fa-paw"/></button>
         <button @click.prevent.stop="toSettingPage">
             <font-awesome-icon class="user icon" icon="fa-solid fa-user" /></button>
-        <button><font-awesome-icon class="log icon" icon="fa-solid fa-arrow-right-from-bracket" /></button>
+        <button @click.passive.stop = "logOut"
+          ><font-awesome-icon class="log icon" icon="fa-solid fa-arrow-right-from-bracket" /></button>
       </div>
     </div> 
   </div>
@@ -35,6 +36,10 @@ export default {
     },
     toSettingPage(){
       this.$router.push('/setting')
+    },
+    logOut(){
+      // api here and delete information in vuex
+      this.$router.push('/login')
     }
   }
 }
