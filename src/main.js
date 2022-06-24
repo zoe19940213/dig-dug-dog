@@ -4,9 +4,9 @@ import router from './router/index'
 import '@/assets/styles/general.scss'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUser, faArrowRightFromBracket, faPaw, faMagnifyingGlass, faPlay } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faArrowRightFromBracket, faPaw, faMagnifyingGlass, faPlay, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faUser, faArrowRightFromBracket, faPaw, faMagnifyingGlass, faPlay)
+library.add(faUser, faArrowRightFromBracket, faPaw, faMagnifyingGlass, faPlay, faEye, faEyeSlash)
 
 createApp(App)
   .use(router)
