@@ -44,7 +44,7 @@ export default {
 .about{
   position: relative;
   margin-top: 50px;
-  margin-left: 200px;
+  margin-left: 120px;
   width: 680px;
   height: calc(100vh - 120px - 40px);
   overflow: auto;
