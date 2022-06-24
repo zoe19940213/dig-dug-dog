@@ -49,3 +49,24 @@ export const formInputCheck = {
     },
   },
 }
+export const formSubmitDisable = {
+  computed: {
+    submitDisable() {
+      if (
+        this.nameInput.warning ||
+        this.accountInput.warning ||
+        this.passwordInput.warning ||
+        this.passwordCheckInput.warning
+      ) {
+        return true;
+      } else if (!(this.nameInput.name &&
+          this.accountInput.account &&
+          this.passwordInput.password &&
+          this.passwordCheckInput.passwordCheck)) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+  }
+}

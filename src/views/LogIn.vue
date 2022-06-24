@@ -5,18 +5,32 @@
         <label for="">帳號 (E-mail)</label>
         <input
           v-model="accountInput.account"
-          type="text"
+          type="email"
           placeholder="請輸入帳號"
         />
         <label class="message" for="">{{ accountInput.warning }}</label>
       </div>
       <div :class="['input-box', { error: passwordInput.warning }]">
         <label for="">密碼</label>
+        <button 
+          @click.prevent.stop="switchHideAndShow"
+          class="hideAndShow">
+          <font-awesome-icon v-if="passwordInput.show" icon="fa-solid fa-eye-slash" />
+          <font-awesome-icon v-else icon="fa-solid fa-eye" />
+        </button>
         <input
+          v-if="passwordInput.show"
           v-model="passwordInput.password"
           type="text"
           placeholder="請輸入6~12字密碼"
         />
+        <input
+          v-else
+          v-model="passwordInput.password"
+          type="password"
+          placeholder="請輸入6~12字密碼"
+        />
+        
         <label class="message" for="">{{ passwordInput.warning }}</label>
       </div>
       <button 
@@ -45,11 +59,15 @@ export default {
       passwordInput: {
         password: "",
         warning: "",
+        show: false,
       },
       isProcessing: false
     }
   },
   methods:{
+    switchHideAndShow(){
+      this.passwordInput.show = !this.passwordInput.show
+    },
     handleSubmit(){
       this.isProcessing = true
       if(!(this.accountInput.account.trim() &&
@@ -91,37 +109,28 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/styles/sign.scss';
 .log-in {
-  position: fixed;
-  top: 100px;
-  left: 50%;
-  transform: translate(-50%, 0);
+  @extend %form-position;
   &__form {
     padding-bottom: 60px;
     height: 80vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: auto;
+    @extend %form-display;
     .input-box {
       margin-top: 2rem;
       @extend %input-style;
       input, label{
         color: $primary-text-color;
       }
+      .hideAndShow{
+        @extend %password-eye;
+      }
     }
     &__submit-btn {
-      margin-top: 2rem;
-      width: 100px;
-      @include set-button($theme-orange, $white-text-color, 20px);
+      @extend %input-submit-btn;
     }
     &__switch-btn{
-      margin-top: 1rem;
-      font-size: $secondary-text-size;
-      color: $secondary-text-color;
-      &:hover{
-        opacity: 0.7;
-      }
+      @extend %input-switch-btn;
     }
   }
 }

@@ -14,16 +14,29 @@
         <label for="">帳號 (E-mail)</label>
         <input
           v-model="accountInput.account"
-          type="text"
+          type="email"
           placeholder="請輸入帳號"
         />
         <label class="message" for="">{{ accountInput.warning }}</label>
       </div>
       <div :class="['input-box', { error: passwordInput.warning }]">
         <label for="">密碼</label>
+        <button 
+          @click.prevent.stop="switchHideAndShow"
+          class="hideAndShow">
+          <font-awesome-icon v-if="passwordInput.show" icon="fa-solid fa-eye-slash" />
+          <font-awesome-icon v-else icon="fa-solid fa-eye" />
+        </button>
         <input
+          v-if="passwordInput.show"
           v-model="passwordInput.password"
           type="text"
+          placeholder="請輸入6~12字密碼"
+        />
+        <input
+          v-else
+          v-model="passwordInput.password"
+          type="password"
           placeholder="請輸入6~12字密碼"
         />
         <label class="message" for="">{{ passwordInput.warning }}</label>
@@ -31,8 +44,15 @@
       <div :class="['input-box', { error: passwordCheckInput.warning }]">
         <label for="">確認密碼</label>
         <input
+          v-if="passwordCheckInput.show"
           v-model="passwordCheckInput.passwordCheck"
           type="text"
+          placeholder="請確認密碼"
+        />
+        <input
+          v-else
+          v-model="passwordCheckInput.passwordCheck"
+          type="password"
           placeholder="請確認密碼"
         />
         <label class="message" for="">{{ passwordCheckInput.warning }}</label>
@@ -51,11 +71,11 @@
 </template>
 
 <script>
-import {formInputCheck} from '../utils/mixins'
+import {formInputCheck, formSubmitDisable} from '../utils/mixins'
 import {Toast} from '../utils/helpers'
 export default {
   name: "SignUp",
-  mixins:[formInputCheck],
+  mixins:[formInputCheck, formSubmitDisable],
   data() {
     return {
       nameInput: {
@@ -69,15 +89,21 @@ export default {
       passwordInput: {
         password: "",
         warning: "",
+        show: false,
       },
       passwordCheckInput: {
         passwordCheck: "",
         warning: "",
+        show: false,
       },
       isProcessing: false
     };
   },
   methods: {
+    switchHideAndShow(){
+      this.passwordInput.show = !this.passwordInput.show
+      this.passwordCheckInput.show = !this.passwordCheckInput.show
+    },
     handleSubmit() {
       this.isProcessing = true
       if(!(this.nameInput.name.trim() &&
@@ -99,62 +125,33 @@ export default {
       this.isProcessing = false
       this.$router.push('/login')
     },
-  },
-  computed: {
-    submitDisable() {
-      if (
-        this.nameInput.warning ||
-        this.accountInput.warning ||
-        this.passwordInput.warning ||
-        this.passwordCheckInput.warning
-      ) {
-        return true;
-      } else if(!(this.nameInput.name &&
-        this.accountInput.account &&
-        this.passwordInput.password &&
-        this.passwordCheckInput.passwordCheck)){
-          return true;
-      }else {
-        return false;
-      }
-    },
-  },
+  }
 };
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/styles/sign.scss';
 .sign-up {
-  position: fixed;
-  top: 100px;
-  left: 50%;
-  transform: translate(-50%, 0);
+  @extend %form-position;
   &__form {
     padding-bottom: 40px;
     height: 80vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: auto;
+    @extend %form-display;
     .input-box {
       margin-top: 2rem;
       @extend %input-style;
-      input,
-      label {
+      input,label {
         color: $primary-text-color;
+      }
+      .hideAndShow{
+        @extend %password-eye;
       }
     }
     &__submit-btn {
-      margin-top: 2rem;
-      width: 100px;
-      @include set-button($theme-orange, $white-text-color, 20px);
+      @extend %input-submit-btn;
     }
     &__switch-btn {
-      margin-top: 1rem;
-      font-size: $secondary-text-size;
-      color: $secondary-text-color;
-      &:hover {
-        opacity: 0.7;
-      }
+      @extend %input-switch-btn;
     }
   }
 }
