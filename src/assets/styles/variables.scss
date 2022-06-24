@@ -36,6 +36,7 @@ $big-text-size: 20px;
 /* - inputs - */
 
 %input-style {
+  position: relative;
   display: flex;
   flex-direction: column;
   label {
@@ -44,12 +45,25 @@ $big-text-size: 20px;
   input {
     margin-top: 10px;
     padding: 10px;
-    width: 400px;
-    height: 60px;
+    width: 350px;
+    height: 50px;
     border: 2px solid $support-orange;
     border-radius: 5px;
     &:focus {
       border-color: $theme-orange;
+    }
+  }
+  .message {
+    display: none;
+  }
+  &.error {
+    .message {
+      display: block;
+      position: absolute;
+      top: 78px;
+      right: 0;
+      font-size: $secondary-text-size;
+      color: $theme-orange;
     }
   }
 }
