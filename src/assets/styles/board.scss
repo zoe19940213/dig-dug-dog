@@ -1,0 +1,15 @@
+/* - container - */
+
+%board-continaer {
+  margin: 40px auto 0;
+  width: 85%;
+  @extend %scroll-part;
+}
+
+%part-space {
+  margin-bottom: 4rem;
+}
+
+%title-space {
+  margin-bottom: 2rem;
+}
