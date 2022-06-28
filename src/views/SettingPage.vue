@@ -198,6 +198,7 @@ export default {
 .setting {
   margin: 50px auto;
   width: 65%;
+  @extend %scroll-part;
   color: $primary-text-color;
   &__status-board {
     margin-bottom: 2.5rem;

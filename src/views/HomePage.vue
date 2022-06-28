@@ -250,7 +250,6 @@ export default {
   margin: 40px auto 0;
   width: 85%;
   @extend %scroll-part;
-  overflow: auto;
   &__latest {
     margin-bottom: 3rem;
     &__title {
