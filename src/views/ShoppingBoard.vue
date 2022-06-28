@@ -6,7 +6,10 @@
     </div>
     <div class="shopping__hot-topic">
       <h2 class="shopping__hot-topic__title">發燒話題</h2>
-      <TopicBoard />
+      <TopicBoard 
+        :showHeader="showTopicsHeader"
+        :topics="topics"
+        />
     </div>
   </div>
 </template>
@@ -14,6 +17,53 @@
 <script>
 import CategoryBar from "../components/CategoryBar";
 import TopicBoard from "../components/TopicBoard.vue";
+
+const dummyData = {
+  category: {
+    id: 1,
+    tag: 'shopping',
+    category: '找好商品',
+    subCategory: ""
+  },
+  topicList: [
+    {
+      id: 1,
+      description: "政法政刻、得些電不性，健倒任見國價？",
+      createAt: "2022-06-11T03:50:34.000Z",
+      updateAt: "2019-06-11T09:34:23.000Z",
+      specialTag: "hot",
+    },
+    {
+      id: 2,
+      description: "解而不統說的紅教文！",
+      createAt: "2022-06-11T06:53:34.000Z",
+      updateAt: "2019-06-11T12:34:33.000Z",
+      specialTag: "hot",
+    },
+    {
+      id: 3,
+      description: "人什們學好？一過能。而化素式角大造合？",
+      createAt: "2022-06-12T04:50:54.000Z",
+      updateAt: "2019-06-14T10:30:22.000Z",
+      specialTag: "hot",
+    },
+    {
+      id: 4,
+      description: "們快政但朋八大。馬一資似；人來那來知！",
+      createAt: "2022-06-13T09:53:30.000Z",
+      updateAt: "2019-06-14T11:55:29.000Z",
+      specialTag: "hot",
+    },
+    {
+      id: 5,
+      description: "個到可用不唱你有；三天片作時企手建經不與～",
+      createAt: "2022-06-12T08:24:04.000Z",
+      updateAt: "2019-06-16T04:50:28.000Z",
+      specialTag: "hot",
+    },
+  ],
+};
+
 export default {
   name: "ShoppingBoard",
   components: {
@@ -59,8 +109,25 @@ export default {
           image: require('../assets/logos/shopping/wear.jpg')
         },
       ],
+      topics: {
+        category: {},
+        topicList: [],
+      },
+      showTopicsHeader: false,
     };
   },
+  methods:{
+    fecthTopics() {
+      const { category, topicList } = dummyData;
+      this.topics = {
+        category,
+        topicList,
+      };
+    },
+  },
+  created(){
+    this.fecthTopics()
+  }
 };
 </script>
 
