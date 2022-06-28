@@ -100,8 +100,6 @@ export default {
         transform: rotate(180deg);
       }
     }
-    &__title {
-    }
   }
   &__main {
     &__list {

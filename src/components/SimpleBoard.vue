@@ -1,15 +1,18 @@
 <template>
   <div class="simple-board">
     <div class="simple-board__wrapper">
-      <h3 class="simple-board__title">{{topics.category}}</h3>
+      <h3 class="simple-board__title">{{topics.category.subCategory}}</h3>
       <ul class="simple-board__topics">
         <li
-          v-for="topic in topics.topics" :key="topic.id" 
+          v-for="topic in topics.topicList" :key="topic.id" 
           class="simple-board__topics__item">
           <router-link 
             :to="{
               name: 'topic', 
-              params: {topicId: topic.id} }">
+              params: {
+                category: topics.category.tag,
+                categoryId: topics.category.id,
+                topicId: topic.id} }">
             {{topic.description}}</router-link>
         </li>
         
