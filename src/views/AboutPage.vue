@@ -46,7 +46,7 @@ export default {
   margin-top: 50px;
   margin-left: 120px;
   width: 680px;
-  height: calc(100vh - 120px - 40px);
+  @extend %scroll-part;
   overflow: auto;
   &__title{
     margin-top: 5px;

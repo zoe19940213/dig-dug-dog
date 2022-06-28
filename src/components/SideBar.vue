@@ -49,11 +49,9 @@ export default {
   &__list{
     text-align: center;
     &__item{
-      color: $primary-text-color;
       line-height: 2.5rem;
       a{
         font-weight: bold;
-        color: $primary-text-color;
         &:hover{
           opacity: 0.7;
         }

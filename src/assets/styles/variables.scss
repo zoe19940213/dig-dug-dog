@@ -67,3 +67,10 @@ $big-text-size: 20px;
     }
   }
 }
+
+
+/* - scroll - */
+
+%scroll-part {
+  height: calc(100vh - 120px - 40px);
+}
