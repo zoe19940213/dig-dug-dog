@@ -50,13 +50,13 @@ const routes = [{
       import ('../views/GetDogs')
   },
   {
-    path: '/topics/:category',
+    path: '/topics/:category/:categoryId',
     name: 'topics',
     component: () =>
       import ('../views/TopicsBoard'),
   },
   {
-    path: '/topics/:topicId',
+    path: '/topics/:category/:categoryId/:topicId',
     name: 'topic',
     component: () =>
       import ('../views/SingleTopic'),
