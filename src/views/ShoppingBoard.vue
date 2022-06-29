@@ -2,7 +2,9 @@
   <div class="shopping">
     <div class="shopping__categories">
       <h2 class="shopping__categories__title">主題分類</h2>
-      <CategoryBar :categories="categories" />
+      <CategoryBar 
+        :categoryTag="categoryTag"
+        :categories="categories" />
     </div>
     <div class="shopping__hot-topic">
       <h2 class="shopping__hot-topic__title">發燒話題</h2>
@@ -82,6 +84,7 @@ export default {
   },
   data() {
     return {
+      categoryTag: 'shopping',
       categories: [
         {
           id: "1-1",
