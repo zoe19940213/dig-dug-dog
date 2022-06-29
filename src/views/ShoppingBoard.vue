@@ -13,7 +13,7 @@
 
 <script>
 import CategoryBar from "../components/CategoryBar";
-import BoardModel from "../components/BoardModel.vue";
+import BoardModel from "../components/BoardModel";
 
 const dummyData = [
   {
