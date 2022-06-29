@@ -5,7 +5,7 @@
         <font-awesome-icon class="icon" icon="fa-solid fa-play" />
       </button>
       <h2 class="board__header__title">
-        {{ topics.category.category }} - {{ topics.category.subCategory }}
+        {{ topics.category.main }} - {{ topics.category.sub }}
       </h2>
     </div>
     <div class="board__main">
@@ -13,7 +13,7 @@
         <li
           v-for="topic in topics.topicList"
           :key="topic.id"
-          @click.prevent.stop="toTopic(topics.category.tag,topics.category.id,topic.id)"
+          @click.prevent.stop="toTopic(topic.category.board,topic.category.id,topic.id)"
           class="board__main__list__item"
         >
           <div class="board__main__list__item__left-part">
@@ -21,13 +21,13 @@
               :class="[
                 'board__main__list__item__left-part__spot',
                 {
-                  hot: topic.specialTag === 'hot',
-                  new: topic.specialTag === 'new',
+                  hot: topic.tag === 'hot',
+                  new: topic.tag === 'new',
                 },
               ]"
             ></div>
             <p class="board__main__list__item__left-part__description">
-              {{ topic.description }}
+              {{ topic.title }}
             </p>
           </div>
           <div class="board__main__list__item__right-part">

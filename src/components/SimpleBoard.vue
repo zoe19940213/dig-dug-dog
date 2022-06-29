@@ -1,7 +1,7 @@
 <template>
   <div class="simple-board">
     <div class="simple-board__wrapper">
-      <h3 class="simple-board__title">{{topics.category.subCategory}}</h3>
+      <h3 class="simple-board__title">{{topics.category}}</h3>
       <ul class="simple-board__topics">
         <li
           v-for="topic in topics.topicList" :key="topic.id" 
@@ -10,10 +10,10 @@
             :to="{
               name: 'topic', 
               params: {
-                category: topics.category.tag,
-                categoryId: topics.category.id,
+                category: topic.category.board,
+                categoryId: topic.category.id,
                 topicId: topic.id} }">
-            {{topic.description}}</router-link>
+            {{topic.title}}</router-link>
         </li>
         
       </ul>

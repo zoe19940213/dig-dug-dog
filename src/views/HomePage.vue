@@ -40,94 +40,108 @@ import SimpleBoard from "../components/SimpleBoard";
 import CarouselPart from "../components/CarouselPart";
 
 const dummyData = {
-  hotTopics: [
+  shoppingHot: [
     {
+      id: 1,
+      title: "政法政刻、得些電不性，健倒任見國價？",
       category: {
-        id: '1-1',
-        tag: "shopping",
-        category: "找好商品",
-        subCategory: "主食零食",
+        id: "1-1",
+        board: "shopping",
       },
-      topicList: [
-        {
-          id: 1,
-          description: "政法政刻、得些電不性，健倒任見國價？",
-        },
-        {
-          id: 2,
-          description: "感遊指比館生因思兒、業在意。藝兒間兒口是物！",
-        },
-        {
-          id: 3,
-          description: "下度時賽這的下不，有食之年！",
-        },
-      ],
     },
     {
+      id: 2,
+      title: "感遊指比館生因思兒、業在意。藝兒間兒口是物！",
       category: {
-        id: '2-1',
-        tag: "medical",
-        category: "找好醫院",
-        subCategory: "北北基動物醫院",
+        id: "1-2",
+        board: "shopping",
       },
-      topicList: [
-        {
-          id: 1,
-          description: "面子不為童不有節……父來馬人育不北代知隨",
-        },
-        {
-          id: 2,
-          description: "必解而不統說的紅教文！",
-        },
-        {
-          id: 3,
-          description: "備半金著是，給和面兒小外母轉其件進那機時",
-        },
-      ],
     },
     {
+      id: 3,
+      title: "下度時賽這的下不，有食之年！",
       category: {
-        id: '3-2',
-        tag: "knowledge",
-        category: "找好知識",
-        subCategory: "幼犬行為",
+        id: "1-2",
+        board: "shopping",
       },
-      topicList: [
-        {
-          id: 1,
-          description: "政法政刻、得些電不性，健倒任見國價？",
-        },
-        {
-          id: 2,
-          description: "那不想無、法生如跑，減人破不個",
-        },
-        {
-          id: 3,
-          description: "應飯有舞調府仍，所城調的的康建球本將。",
-        },
-      ],
+    },
+  ],
+  medicalHot: [
+    {
+      id: 1,
+      title: "面子不為童不有節……父來馬人育不北代知隨",
+      category: {
+        id: "2-1",
+        board: "medical",
+      },
     },
     {
+      id: 2,
+      title: "必解而不統說的紅教文！",
       category: {
-        id: '4-1',
-        tag: "getdogs",
-        category: "找好狗狗",
-        subCategory: "領養狗狗",
+        id: "2-3",
+        board: "medical",
       },
-      topicList: [
-        {
-          id: 1,
-          description: "未面時的行動市們小弟就是老計交開待！",
-        },
-        {
-          id: 2,
-          description: "愛地數團根推情那不想無、法生如跑，減人破不個",
-        },
-        {
-          id: 3,
-          description: "般色完落防狀子的未師整孩於，你是還我？",
-        },
-      ],
+    },
+    {
+      id: 3,
+      title: "備半金著是，給和面兒小外母轉其件進那機時",
+      category: {
+        id: "2-2",
+        board: "medical",
+      },
+    },
+  ],
+  knowledgeHot: [
+    {
+      id: 1,
+      title: "政法政刻、得些電不性，健倒任見國價？",
+      category: {
+        id: "3-1",
+        board: "knowledge",
+      },
+    },
+    {
+      id: 2,
+      title: "那不想無、法生如跑，減人破不個",
+      category: {
+        id: "3-4",
+        board: "knowledge",
+      },
+    },
+    {
+      id: 3,
+      title: "應飯有舞調府仍，所城調的的康建球本將。",
+      category: {
+        id: "3-2",
+        board: "knowledge",
+      },
+    },
+  ],
+  getdogsHot: [
+    {
+      id: 1,
+      title: "未面時的行動市們小弟就是老計交開待！",
+      category: {
+        id: "4-1",
+        board: "getdogs",
+      },
+    },
+    {
+      id: 2,
+      title: "愛地數團根推情那不想無、法生如跑，減人破不個",
+      category: {
+        id: "4-2",
+        board: "getdogs",
+      },
+    },
+    {
+      id: 3,
+      title: "般色完落防狀子的未師整孩於，你是還我？",
+      category: {
+        id: "4-3",
+        board: "getdogs",
+      },
     },
   ],
   topTen: [
@@ -251,7 +265,23 @@ export default {
   },
   methods: {
     fetchHotTopics() {
-      this.hotTopics = [...dummyData.hotTopics];
+      this.hotTopics.push({
+        category: '找好商品',
+        topicList: [...dummyData.shoppingHot]
+      }) 
+      this.hotTopics.push({
+        category: '找好醫療',
+        topicList: [...dummyData.medicalHot]
+      })
+      this.hotTopics.push({
+        category: '找好知識',
+        topicList: [...dummyData.knowledgeHot]
+      })
+      this.hotTopics.push({
+        category: '找好狗狗',
+        topicList: [...dummyData.getdogsHot]
+      })
+      
     },
     fetchTopTen() {
       this.topTen = [...dummyData.topTen];

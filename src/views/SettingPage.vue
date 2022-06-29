@@ -95,9 +95,8 @@ const dummyCurrentUser = {
   account: "zoechen34@hotmail.com",
   password: "831029",
   point: 26,
-  intellCounts: 2,
-  replyCounts: 6,
-  likeTopics: [],
+  postCount: 2,
+  replyCount: 6,
 };
 
 export default {
@@ -110,9 +109,8 @@ export default {
         account: "",
         password: "",
         point: 0,
-        intellCounts: 0,
-        replyCounts: 0,
-        likeTopics: [],
+        postCount: 0,
+        replyCount: 0,
       },
       nameInput: {
         name: "",
@@ -143,18 +141,16 @@ export default {
         point,
         account,
         password,
-        intellCounts,
-        replyCounts,
-        likeTopics,
+        postCount,
+        replyCount,
       } = dummyCurrentUser;
       this.currentUser = {
         name,
         account,
         password,
         point,
-        intellCounts,
-        replyCounts,
-        likeTopics,
+        postCount,
+        replyCount,
       };
       this.nameInput= this.currentUser.name
       this.accountInput = this.currentUser.account
