@@ -2,7 +2,9 @@
   <div class="medical">
     <div class="medical__categories">
       <h2 class="medical__categories__title">主題分類</h2>
-      <CategoryBar :categories="categories" />
+      <CategoryBar 
+        :categoryTag="categoryTag"
+        :categories="categories" />
     </div>
     <div class="medical__hot-topic">
       <h2 class="medical__hot-topic__title">發燒話題</h2>
@@ -81,6 +83,7 @@ export default {
   },
   data() {
     return {
+      categoryTag: 'medical',
       categories: [
         {
           id: "2-1",
