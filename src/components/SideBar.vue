@@ -10,19 +10,19 @@
         </li>
         <li class="side-bar__list__item">
           <font-awesome-icon 
-            :class="['point', {active: this.$route.path.includes('medical-board')}]" 
+            :class="['point', {active: this.$route.path.includes('medical')}]" 
             icon="fa-solid fa-play" />
           <router-link to="/board/medical">找好醫院</router-link>
         </li>
         <li class="side-bar__list__item">
           <font-awesome-icon 
-            :class="['point', {active: this.$route.path.includes('knowledge-board')}]" 
+            :class="['point', {active: this.$route.path.includes('knowledge')}]" 
             icon="fa-solid fa-play" />
           <router-link to="/board/knowledge">找好知識</router-link>
         </li>
         <li class="side-bar__list__item">
           <font-awesome-icon 
-          :class="['point', {active: this.$route.path.includes('get-dogs')}]" 
+          :class="['point', {active: this.$route.path.includes('getdogs')}]" 
           icon="fa-solid fa-play" />
           <router-link to="/board/getdogs">找好狗狗</router-link>
         </li>

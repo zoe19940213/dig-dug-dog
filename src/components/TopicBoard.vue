@@ -113,7 +113,7 @@ export default {
         &:hover {
           cursor: pointer;
           & .topic-board__main__list__item__left-part__description{
-            opacity: 0.6;
+            color: $theme-orange;
           }
           & .topic-board__main__list__item__right-part__icon{
             color: $theme-orange;
