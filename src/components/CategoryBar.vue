@@ -14,6 +14,10 @@
 export default {
   name: "CategoryBar",
   props: {
+    categoryTag:{
+      type: String,
+      required: true
+    },
     categories:{
       type: Array,
       required: true
@@ -27,7 +31,7 @@ export default {
       this.$router.push({
         name: 'topics',
         params: {
-          category: 'shopping',
+          category: this.categoryTag,
           categoryId: categoryId,}
       })
     }
