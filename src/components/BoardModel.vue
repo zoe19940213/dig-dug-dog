@@ -1,40 +1,40 @@
 <template>
-  <div class="topic-board">
-    <div v-if="showHeader" class="topic-board__header">
-      <button class="topic-board__header__back">
+  <div class="board">
+    <div v-if="showHeader" class="board__header">
+      <button class="board__header__back">
         <font-awesome-icon class="icon" icon="fa-solid fa-play" />
       </button>
-      <h2 class="topic-board__header__title">
+      <h2 class="board__header__title">
         {{ topics.category.category }} - {{ topics.category.subCategory }}
       </h2>
     </div>
-    <div class="topic-board__main">
-      <ul class="topic-board__main__list">
+    <div class="board__main">
+      <ul class="board__main__list">
         <li
           v-for="topic in topics.topicList"
           :key="topic.id"
           @click.prevent.stop="toTopic(topics.category.tag,topics.category.id,topic.id)"
-          class="topic-board__main__list__item"
+          class="board__main__list__item"
         >
-          <div class="topic-board__main__list__item__left-part">
+          <div class="board__main__list__item__left-part">
             <div
               :class="[
-                'topic-board__main__list__item__left-part__spot',
+                'board__main__list__item__left-part__spot',
                 {
                   hot: topic.specialTag === 'hot',
                   new: topic.specialTag === 'new',
                 },
               ]"
             ></div>
-            <p class="topic-board__main__list__item__left-part__description">
+            <p class="board__main__list__item__left-part__description">
               {{ topic.description }}
             </p>
           </div>
-          <div class="topic-board__main__list__item__right-part">
-            <p class="topic-board__main__list__item__right-part__create-time">
+          <div class="board__main__list__item__right-part">
+            <p class="board__main__list__item__right-part__create-time">
               {{ topic.updateAt }}
             </p>
-            <div class="topic-board__main__list__item__right-part__icon">
+            <div class="board__main__list__item__right-part__icon">
               <font-awesome-icon class="icon" icon="fa-solid fa-play" />
             </div>
           </div>
@@ -74,7 +74,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.topic-board {
+.board {
   border: 2px solid $theme-green;
   border-radius: 5px;
   &__header {
@@ -110,10 +110,10 @@ export default {
         justify-content: space-between;
         &:hover {
           cursor: pointer;
-          & .topic-board__main__list__item__left-part__description{
+          & .board__main__list__item__left-part__description{
             color: $theme-orange;
           }
-          & .topic-board__main__list__item__right-part__icon{
+          & .board__main__list__item__right-part__icon{
             color: $theme-orange;
           }
         }

@@ -6,7 +6,7 @@
     </div>
     <div class="shopping__hot-topic">
       <h2 class="shopping__hot-topic__title">發燒話題</h2>
-      <TopicBoard 
+      <BoardModel 
         :showHeader="showTopicsHeader"
         :topics="topics"
         />
@@ -16,7 +16,7 @@
 
 <script>
 import CategoryBar from "../components/CategoryBar";
-import TopicBoard from "../components/TopicBoard.vue";
+import BoardModel from "../components/BoardModel.vue";
 
 const dummyData = {
   category: {
@@ -68,7 +68,7 @@ export default {
   name: "ShoppingBoard",
   components: {
     CategoryBar,
-    TopicBoard,
+    BoardModel,
   },
   data() {
     return {
