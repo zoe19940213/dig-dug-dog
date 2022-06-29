@@ -57,6 +57,7 @@ export default {
     }
     &__image{
       width: 120px;
+      height: 120px;
     }
     &__description{
       color: $primary-text-color;

@@ -86,7 +86,7 @@ export default {
         {
           id: "1-1",
           name: "主食零食",
-          image: require("@/assets/logos/shopping/food.jpg"),
+          image: require("../assets/logos/shopping/food.jpg"),
         },
         {
           id: "1-2",
