@@ -28,6 +28,9 @@
         </li>
       </ul>
     </div>
+    <button class="side-bar__post-btn">
+      我有情報
+    </button>
   </div>
 </template>
 
@@ -40,6 +43,7 @@ export default {
 <style lang="scss" scoped>
 .side-bar{
   padding: 2rem 3rem 2rem 2rem;
+  text-align: center;
   &__wrapper{
     width: 100%;
     padding: 1.5rem;
@@ -67,6 +71,12 @@ export default {
           }
         }
       }
+    }
+  }
+  &__post-btn{
+    margin-top: 1.5rem;
+    @include set-button($theme-orange, $white-text-color, $primary-text-size){
+      padding: 10px 20px;
     }
   }
 }
