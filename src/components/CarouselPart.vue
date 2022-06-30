@@ -1,21 +1,17 @@
 <template>
   <div class="carousel">
-    <button
-      @click.prevent.stop="handleBtnLeft()"
-      class="carousel__button-left"
-    >
+    <button @click.prevent.stop="handleBtnLeft()" class="carousel__button-left">
       <font-awesome-icon class="icon" icon="fa-solid fa-play" />
     </button>
     <div class="carousel__container">
-      <div :class="['carousel__cards', {'left-move': leftMove}]">
+      <div :class="['carousel__cards', { 'left-move': leftMove }]">
         <div
           v-for="product in products"
           :key="product.id"
           class="carousel__cards__card"
         >
-          <div class="carousel__cards__card__img">
-            <img :src="product.image" alt="" />
-          </div>
+          <p class="carousel__cards__card__check">Check!</p>
+          <img class="carousel__cards__card__img" :src="product.image" alt="" />
           <p class="carousel__cards__card__description">
             {{ product.description }}
           </p>
@@ -46,12 +42,12 @@ export default {
     };
   },
   methods: {
-    handleBtnLeft(){
-      this.leftMove = false
+    handleBtnLeft() {
+      this.leftMove = false;
     },
-    handleBtnRight(){
-      this.leftMove = true
-    }
+    handleBtnRight() {
+      this.leftMove = true;
+    },
   },
   created() {},
 };
@@ -63,31 +59,48 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  &__container{
+  &__container {
     position: relative;
     width: 85%;
     overflow: hidden;
   }
   &__cards {
     position: relative;
-    &.left-move{
+    &.left-move {
       left: -100%;
     }
     left: 0;
-    transition: left .3s;
+    transition: left 0.3s;
     display: flex;
     &__card {
+      position: relative;
       margin-right: 1rem;
       text-align: center;
+      &:hover {
+        cursor: pointer;
+        &>img {
+          opacity: 0.5;
+        }
+        &>.carousel__cards__card__check{
+          transform: translate(-50%, -50%) scale(1, 1);
+        }
+      }
+      &__check {
+        position: absolute;
+        z-index: 2;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0, 1);
+        transition: transform 0.3s;
+        font-weight: bold;
+      }
       &__img {
         margin-bottom: 0.8rem;
-        img {
-          width: 150px;
-          height: 150px;
-          object-fit: cover;
-          border: 2px solid $support-pink;
-          border-radius: 5px;
-        }
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border: 2px solid $support-pink;
+        border-radius: 5px;
       }
     }
   }
