@@ -1,7 +1,10 @@
 <template>
   <div class="board">
-    <div v-if="showHeader" class="board__header">
-      <button class="board__header__back">
+    <div v-if="showHeader" 
+      @click.prevent.stop="$router.back()"
+      class="board__header">
+      <button 
+        class="board__header__back">
         <font-awesome-icon class="icon" icon="fa-solid fa-play" />
       </button>
       <h2 class="board__header__title">
