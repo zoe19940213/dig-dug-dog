@@ -23,7 +23,7 @@
 %input-submit-btn {
   margin-top: 2rem;
   width: 100px;
-  @include set-button($theme-orange, $white-text-color, 20px);
+  @include set-button($theme-orange, $white-text-color, $primary-text-size);
 }
 
 

@@ -32,12 +32,16 @@
         </div>
       </div>
     </div>
+    <div class="modal-mask">
+    </div>
+    <PostModal />
   </div>
 </template>
 
 <script>
 import SimpleBoard from "../components/SimpleBoard";
 import CarouselPart from "../components/CarouselPart";
+import PostModal from "../components/PostModal"
 
 const dummyData = {
   shoppingHot: [
@@ -255,6 +259,7 @@ export default {
   components: {
     SimpleBoard,
     CarouselPart,
+    PostModal
   },
   data() {
     return {
@@ -347,6 +352,9 @@ export default {
         height: 100px;
       }
     }
+  }
+  .modal-mask{
+    @extend %modal-mask;
   }
 }
 </style>

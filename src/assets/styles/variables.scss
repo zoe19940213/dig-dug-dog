@@ -28,7 +28,7 @@ $big-text-size: 20px;
   text-align: center;
   background-color: $bg-color;
   color: $text-color;
-  font-size: $primary-text-size;
+  font-size: $text-size;
   @content;
 }
 
