@@ -2,7 +2,7 @@
   <div class="modal">
     <div class="modal__header">
       <h3 class="modal__header__title">我有情報</h3>
-      <button class="modal__header__cross-btn">
+      <button @click.prevent.stop="closeModal" class="modal__header__cross-btn">
         <font-awesome-icon icon="fa-solid fa-xmark" class="icon" />
       </button>
     </div>
@@ -60,7 +60,9 @@
         ></textarea>
       </div>
       <div class="modal__footer">
-      <button class="modal__footer__submit-btn">分享</button>
+      <button 
+        @click.prevent.stop="submitForm"
+        class="modal__footer__submit-btn">分享</button>
     </div>
     </div>
     
@@ -181,6 +183,16 @@ export default {
       selectCategory: 'shopping',
     };
   },
+  methods:{
+    closeModal(){
+      this.$emit('closeModal')
+    },
+    submitForm(){
+      // submit api here
+      this.$emit('submitForm')
+    },
+
+  }
 };
 </script>
 

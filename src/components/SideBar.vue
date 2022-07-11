@@ -28,7 +28,9 @@
         </li>
       </ul>
     </div>
-    <button class="side-bar__post-btn">
+    <button 
+      @click.prevent.stop="openModal"
+      class="side-bar__post-btn">
       我有情報
     </button>
   </div>
@@ -37,6 +39,11 @@
 <script>
 export default {
   name:'SideBar',
+  methods:{
+    openModal(){
+      this.$emit('openModal')
+    }
+  }
 }
 </script>
 
