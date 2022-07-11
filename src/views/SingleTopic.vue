@@ -2,16 +2,22 @@
   <div class="topic">
     <div class="topic__wrapper">
       <div class="topic__post">
-        <PostModel :post="post"
-                   @toggleReplyInput="toggleReplyInput"
-                   @like="like"
-                   @unlike="unlike"/>
+        <PostModel
+          :post="post"
+          @toggleReplyInput="toggleReplyInput"
+          @like="like"
+          @unlike="unlike"
+        />
       </div>
       <div class="topic__reply">
-        <input :class="['topic__reply__input-box', {show: showReplyInput}]" 
-               type="text" placeholder="回覆...">
-        <ReplyBlock v-for="reply in replies" :key="reply.id"
-                    :reply="reply"/>
+        <input
+          :class="['topic__reply__input-box', { show: showReplyInput }]"
+          type="text"
+          placeholder="回覆..."
+          v-model="replyInput"
+          @keyup.enter="reply"
+        />
+        <ReplyBlock v-for="reply in replies" :key="reply.id" :reply="reply" />
       </div>
     </div>
   </div>
@@ -20,8 +26,13 @@
 <script>
 import PostModel from "../components/PostModel";
 import ReplyBlock from "../components/ReplyBlock";
+import { v4 as uuidv4 } from 'uuid';
 
 const dummyData = {
+  currentUser:{
+    id: 999,
+    name: 'Zoe Chen'
+  },
   post: {
     id: 1,
     category: {
@@ -51,35 +62,36 @@ const dummyData = {
   },
   replies: [
     {
-      id:11,
-      user:{
+      id: 11,
+      user: {
         id: 2,
-        name: "A-boo"
+        name: "A-boo",
       },
-      content: '請金了那光出很心！沒是一共外而導近種園一遠於他灣在？受計年歡王如面視電影信生案望, 請金了那光出很心！沒是一共外而導近種園一遠於他灣在？受計年歡王如面視電影信生案望',
+      content:
+        "請金了那光出很心！沒是一共外而導近種園一遠於他灣在？受計年歡王如面視電影信生案望, 請金了那光出很心！沒是一共外而導近種園一遠於他灣在？受計年歡王如面視電影信生案望",
       createdAt: "2019-06-11T12:34:33.000Z",
       updatedAt: "2019-06-12T11:22:39.000Z",
     },
     {
-      id:12,
-      user:{
+      id: 12,
+      user: {
         id: 3,
-        name: "Poly Hsieh"
+        name: "Poly Hsieh",
       },
-      content: '有上理，公體利懷香值選聯？腳期一，人醫後……分亞同不且的體費信',
+      content: "有上理，公體利懷香值選聯？腳期一，人醫後……分亞同不且的體費信",
       createdAt: "2019-06-11T12:34:33.000Z",
       updatedAt: "2019-06-12T11:22:39.000Z",
     },
     {
-      id:13,
-      user:{
+      id: 13,
+      user: {
         id: 5,
-        name: "Agent"
+        name: "Agent",
       },
-      content: '路一如大光夠。格日異的好！室特一酒身們由出總？',
+      content: "路一如大光夠。格日異的好！室特一酒身們由出總？",
       createdAt: "2019-06-13T12:34:33.000Z",
       updatedAt: "2019-06-14T11:22:39.000Z",
-    }
+    },
   ],
 };
 
@@ -92,8 +104,9 @@ export default {
   data() {
     return {
       post: {},
-      replies:[],
+      replies: [],
       showReplyInput: false,
+      replyInput: "",
     };
   },
   methods: {
@@ -101,49 +114,61 @@ export default {
       // api here
       this.post = { ...dummyData.post };
     },
-    fetchReplies(){
+    fetchReplies() {
       // api here
-      this.replies = {...dummyData.replies}
+      this.replies = [...dummyData.replies ];
     },
-    toggleReplyInput(){
-      this.showReplyInput = !this.showReplyInput
+    toggleReplyInput() {
+      this.showReplyInput = !this.showReplyInput;
     },
-    like(){
-      this.post.isLiked = true
+    reply() {
+      // submit reply api here
+      const date = new Date()
+      this.replies.push({
+        id: uuidv4(),
+        user: dummyData.currentUser,
+        content: this.replyInput,
+        createdAt: date.toISOString(),
+        updatedAt: date.toISOString(),
+      })
+      this.replyInput = "";
     },
-    unlike(){
-      this.post.isLiked = false
+    like() {
+      this.post.isLiked = true;
+    },
+    unlike() {
+      this.post.isLiked = false;
     },
   },
   created() {
     this.fetchPost();
-    this.fetchReplies()
+    this.fetchReplies();
   },
 };
 </script>
 
 <style lang="scss" scoped>
 @import "../assets/styles/board.scss";
-.topic{
+.topic {
   @extend %board-continaer;
-  
+
   border: 2px solid $theme-green;
   border-radius: 5px;
-  &__post{
+  &__post {
     padding: 1rem;
     border-bottom: 1px solid $theme-green;
   }
-  &__reply{
-    padding: 1rem 2rem; 
-    &__input-box{
+  &__reply {
+    padding: 1rem 2rem;
+    &__input-box {
       width: 100%;
       border-radius: 15px;
-      background: #F5F5F5;
+      background: #f5f5f5;
       line-height: 1.5rem;
       transform: scale(1, 0);
       transform-origin: top;
       transition: transform 0.3s;
-      &.show{
+      &.show {
         margin-bottom: 1.5rem;
         padding: 8px 0.8rem;
         transform: scale(1, 1);
