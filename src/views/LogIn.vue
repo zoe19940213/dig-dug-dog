@@ -47,6 +47,8 @@
 <script>
 import {formInputCheck} from '../utils/mixins'
 import {Toast} from '../utils/helpers'
+import { v4 as uuidv4 } from 'uuid';
+
 export default {
   name: "LogIn",
   mixins:[formInputCheck],
@@ -79,7 +81,20 @@ export default {
           this.isProcessing = false
           return
         }
+
       // may use api here to check authorizaion and get current user
+      // front-end only version:
+      const currentUser = {
+        id: uuidv4(),
+        name: "Guest",
+        account: this.accountInput.account,
+        password: this.passwordInput.password,
+        point: 26,
+        postCount: 2,
+        replyCount: 6,
+      }
+      this.$store.commit('setCurrentUser',currentUser)
+
       Toast.fire({
         title: '已成功登入',
         icon: 'success'
