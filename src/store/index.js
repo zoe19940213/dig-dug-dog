@@ -4,15 +4,16 @@ const store = createStore({
   state() {
     return {
       currentUser: {
-        id: 1,
-        name: "Zoe Chen",
-        account: "zoechen34@hotmail.com",
-        password: "831029",
-        point: 26,
-        postCount: 2,
-        replyCount: 6,
+        id: 0,
+        name: "",
+        account: "",
+        password: "",
+        point: 0,
+        postCount: 0,
+        replyCount: 0,
       },
-      isAuthenticated: true,
+      isAuthenticated: false,
+      token: ''
     }
   },
   mutations: {
@@ -22,8 +23,24 @@ const store = createStore({
         ...currentUser
       }
       state.isAuthenticated = true
+      state.token = sessionStorage.getItem('token')
+    },
+    revokeAuthentication(state) {
+      state.currentUser = {}
+      state.isAuthenticated = false
+      sessionStorage.removeItem('token')
     }
   },
+  actions: {
+    fetchCurrentUser({ commit }) {
+      // api fetch currentUser 
+
+      //no need code below if api works
+      const currentUser = JSON.parse(sessionStorage.getItem('currentUser'))
+      commit('setCurrentUser', currentUser)
+      return true // depend on api result
+    }
+  }
 })
 
 export default store

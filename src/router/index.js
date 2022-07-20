@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import HomePage from '../views/HomePage'
 import NotFound from '../views/NotFound'
+import store from '../store/index'
 
 
 const routes = [{
@@ -83,6 +84,26 @@ const routes = [{
 const router = createRouter({
   history: createWebHashHistory(),
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  const token = sessionStorage.getItem('token')
+    // check if isAuthenticated if api works
+  let isAuthenticated = false
+  if (token) {
+    isAuthenticated = store.dispatch('fetchCurrentUser')
+  }
+
+  if (!isAuthenticated && to.name !== 'log-in') {
+    next('/login')
+    return
+  }
+
+  if (isAuthenticated && to.name === 'log-in') {
+    next('/home')
+    return
+  }
+  next()
 })
 
 export default router

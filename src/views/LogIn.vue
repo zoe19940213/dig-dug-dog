@@ -83,17 +83,23 @@ export default {
         }
 
       // may use api here to check authorizaion and get current user
-      // front-end only version:
+      
+      //no need code below if api works
       const currentUser = {
         id: uuidv4(),
         name: "Guest",
         account: this.accountInput.account,
         password: this.passwordInput.password,
-        point: 26,
-        postCount: 2,
-        replyCount: 6,
+        point: Math.floor(Math.random()*101),
+        postCount: Math.floor(Math.random()*51),
+        replyCount: Math.floor(Math.random()*31),
       }
+      
       this.$store.commit('setCurrentUser',currentUser)
+      sessionStorage.setItem('token', 'front-end-token-123')
+      
+      //no need code below if api works
+      sessionStorage.setItem('currentUser', JSON.stringify(currentUser))
 
       Toast.fire({
         title: '已成功登入',
