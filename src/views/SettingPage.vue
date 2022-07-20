@@ -1,16 +1,16 @@
 <template>
   <div class="setting">
     <div class="setting__status-board">
-      <h2 class="setting__status-board__title">使用者暱稱，你好！</h2>
+      <h2 class="setting__status-board__title">{{currentUser.name}}，你好！</h2>
       <div class="setting__status-board__score">
-        <h3 class="setting__status-board__score__current">目前積分：26</h3>
+        <h3 class="setting__status-board__score__current">目前積分：{{currentUser.point}}</h3>
         <p class="setting__status-board__score__description">
           積分說明： 提供情報可獲得10分，回覆可獲得1分，報錯經確認可獲得3分
         </p>
       </div>
       <div class="setting__status-board__info">
-        <h3 class="setting__status-board__info__intell">提供情報數：2</h3>
-        <h3 class="setting__status-board__info__reply">回覆數：6</h3>
+        <h3 class="setting__status-board__info__intell">提供情報數：{{currentUser.postCount}}</h3>
+        <h3 class="setting__status-board__info__reply">回覆數：{{currentUser.replyCount}}</h3>
         <h3 class="setting__status-board__info__liked">喜歡的主題</h3>
       </div>
     </div>
@@ -152,9 +152,9 @@ export default {
         postCount,
         replyCount,
       };
-      this.nameInput= this.currentUser.name
-      this.accountInput = this.currentUser.account
-      this.passwordInput = this.currentUser.password
+      this.nameInput.name= this.currentUser.name
+      this.accountInput.account= this.currentUser.account
+      this.passwordInput.password = this.currentUser.password
     },
     switchHideAndShow() {
       this.passwordInput.show = !this.passwordInput.show;
@@ -186,6 +186,9 @@ export default {
       this.isProcessing = false;
     },
   },
+  created(){
+    this.fecthCurrentUser()
+  }
 };
 </script>
 
