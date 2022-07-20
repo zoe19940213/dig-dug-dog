@@ -87,31 +87,15 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { formInputCheck, formSubmitDisable } from "../utils/mixins";
 import { Toast } from "../utils/helpers";
-
-const dummyCurrentUser = {
-  name: "Zoe Chen",
-  account: "zoechen34@hotmail.com",
-  password: "831029",
-  point: 26,
-  postCount: 2,
-  replyCount: 6,
-};
 
 export default {
   name: "SettingPage",
   mixins: [formInputCheck, formSubmitDisable],
   data() {
     return {
-      currentUser: {
-        name: "",
-        account: "",
-        password: "",
-        point: 0,
-        postCount: 0,
-        replyCount: 0,
-      },
       nameInput: {
         name: "",
         warning: "",
@@ -134,34 +118,18 @@ export default {
     };
   },
   methods: {
-    fecthCurrentUser() {
-      // use api here to etch current user
-      const {
-        name,
-        point,
-        account,
-        password,
-        postCount,
-        replyCount,
-      } = dummyCurrentUser;
-      this.currentUser = {
-        name,
-        account,
-        password,
-        point,
-        postCount,
-        replyCount,
-      };
-      this.nameInput.name= this.currentUser.name
-      this.accountInput.account= this.currentUser.account
-      this.passwordInput.password = this.currentUser.password
+    fetchCurrentUser(){
+      const {name, account, password} =this.currentUser
+      this.nameInput.name = name
+      this.accountInput.account = account
+      this.passwordInput.password = password
     },
     switchHideAndShow() {
       this.passwordInput.show = !this.passwordInput.show;
       this.passwordCheckInput.show = !this.passwordCheckInput.show;
     },
     handleSubmit() {
-      // 尚未調整成setting page版本
+    
       this.isProcessing = true;
       if (
         !(
@@ -178,7 +146,8 @@ export default {
         this.isProcessing = false;
         return;
       }
-      // may use api here to check authorizaion and get current user
+      // use api here to modify personal information
+
       Toast.fire({
         title: "已成功修改",
         icon: "success",
@@ -186,8 +155,11 @@ export default {
       this.isProcessing = false;
     },
   },
+  computed:{
+    ...mapState(['currentUser'])
+  },
   created(){
-    this.fecthCurrentUser()
+    this.fetchCurrentUser()
   }
 };
 </script>
