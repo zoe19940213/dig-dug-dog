@@ -39,6 +39,7 @@ export default {
     },
     logOut(){
       // api here and delete information in vuex
+      this.$store.commit('revokeAuthentication')
       this.$router.push('/login')
     }
   }

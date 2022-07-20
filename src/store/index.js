@@ -24,19 +24,26 @@ const store = createStore({
       }
       state.isAuthenticated = true
       state.token = sessionStorage.getItem('token')
+
     },
     revokeAuthentication(state) {
       state.currentUser = {}
       state.isAuthenticated = false
       sessionStorage.removeItem('token')
+
+      // <-- delete if api works
+      sessionStorage.removeItem('currentUser')
+        // delete if api works -->
     }
   },
   actions: {
     fetchCurrentUser({ commit }) {
       // api fetch currentUser 
 
-      //no need code below if api works
+      // <-- delete if api works
       const currentUser = JSON.parse(sessionStorage.getItem('currentUser'))
+        // delete if api works -->
+
       commit('setCurrentUser', currentUser)
       return true // depend on api result
     }
