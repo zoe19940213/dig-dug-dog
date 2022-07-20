@@ -135,9 +135,11 @@ export default {
     },
     like() {
       this.post.isLiked = true;
+      this.post.likeCount++
     },
     unlike() {
       this.post.isLiked = false;
+      this.post.likeCount--
     },
   },
   created() {

@@ -283,6 +283,7 @@ export default {
     &__content {
       &__textarea {
         overflow: auto;
+        resize: none;
       }
     }
   }
